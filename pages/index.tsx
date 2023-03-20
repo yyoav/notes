@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
 import { InferGetServerSidePropsType } from 'next'
+import Link from 'next/link'
+import styles from './index.module.css'
 
 export async function getServerSideProps(_context: any) {
   try {
@@ -18,7 +20,7 @@ export async function getServerSideProps(_context: any) {
       props: { isConnected: true },
     }
   } catch (e) {
-    console.error('Not connected',e)
+    console.error('Not connected', e)
     return {
       props: { isConnected: false },
     }
@@ -48,7 +50,8 @@ export default function Home({
             for instructions.
           </h2>
         )}
-
+        <Link  className={styles.navbar} href="/ssr">SSR</Link>
+        <Link className={styles.navbar} href="/ssg">SSG</Link>
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>

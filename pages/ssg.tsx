@@ -2,6 +2,7 @@ import clientPromise from "../lib/mongodb";
 import { Note } from "../types/note";
 
 export default function Top({ notes}: {notes:Note[]}): JSX.Element {
+
     return (
         <div>
             <h1>Top 1000 Notes (SSG)</h1>
@@ -15,9 +16,11 @@ export default function Top({ notes}: {notes:Note[]}): JSX.Element {
     );
 }
 
+
 export async function getStaticProps() {
     try {
         const client = await clientPromise;
+        
         const db = client.db("sample_mflix");
 
         const notes = await db

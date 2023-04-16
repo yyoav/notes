@@ -1,7 +1,7 @@
 import clientPromise from "../lib/mongodb";
 import { Note } from "../types/note";
 
-export default function Top({ notes}: {notes:Note[]}): JSX.Element {
+export default function SSGNotes({ notes}: {notes:Note[]}): JSX.Element {
 
     return (
         <div>
@@ -34,5 +34,11 @@ export async function getStaticProps() {
         };
     } catch (e) {
         console.error(e);
+        return {
+            redirect: {
+                destination: '/',
+                statusCode: 307
+            }
+        }
     }
 }

@@ -1,10 +1,11 @@
 import clientPromise from "../lib/mongodb";
 import { Note } from "../types/note";
 
-export default function SSRNotes({ notes}: {notes:Note[]}): JSX.Element {
+export default function ISRNotes({ notes}: {notes:Note[]}): JSX.Element {
+
     return (
         <div>
-            <h1> 20 Notes (SSR)</h1>
+            <h1>200 Notes (ISG)</h1>
             {notes.map((note) => (
                 <div key={note._id}>
                     <p>Name: {note.name}</p>
@@ -15,21 +16,24 @@ export default function SSRNotes({ notes}: {notes:Note[]}): JSX.Element {
     );
 }
 
-export async function getServerSideProps() {
+
+export async function getStaticProps() {
     try {
         const client = await clientPromise;
+
         const db = client.db("sample_mflix");
 
         const notes = await db
             .collection("comments")
             .find({})
-            .limit(20)
+            .limit(200)
             .toArray();
 
         return {
-            props: { notes: JSON.parse(JSON.stringify(notes)) },
+            props: { notes: JSON.parse(JSON.stringify(notes)),revalidate: 10 },
         };
     } catch (e) {
+        console.error(e);
         return {
             redirect: {
                 destination: '/',

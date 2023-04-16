@@ -30,7 +30,8 @@ export async function getStaticProps() {
             .toArray();
 
         return {
-            props: { notes: JSON.parse(JSON.stringify(notes)),revalidate: 10 },
+            props: { notes: JSON.parse(JSON.stringify(notes))},
+            revalidate: 10
         };
     } catch (e) {
         console.error(e);

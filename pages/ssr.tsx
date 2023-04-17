@@ -4,7 +4,7 @@ import { Note } from "../types/note";
 export default function SSRNotes({ notes}: {notes:Note[]}): JSX.Element {
     return (
         <div>
-            <h1> 20 Notes (SSR)</h1>
+            <h1> 200 Notes (SSR)</h1>
             {notes.map((note) => (
                 <div key={note._id}>
                     <p>Name: {note.name}</p>
@@ -23,7 +23,7 @@ export async function getServerSideProps() {
         const notes = await db
             .collection("comments")
             .find({})
-            .limit(20)
+            .limit(200)
             .toArray();
 
         return {

@@ -9,7 +9,7 @@ export default async (req: any, res: { json: (arg0: WithId<Document>[]) => void;
        const notes = await db
            .collection("comments")
            .find({})
-           .limit(100)
+           .limit(200)
            .toArray();
 
        res.json(notes);

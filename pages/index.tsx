@@ -50,10 +50,10 @@ export default function Home({
             for instructions.
           </h2>
         )}
+        <h3> <Link className={styles.navbar} href="/csr">Show 100 notes (CSR)</Link></h3>
         <h3> <Link className={styles.navbar} href="/ssr">Show 20 notes (SSR)</Link></h3>
         <h3> <Link className={styles.navbar} href="/ssg">Show 1000 notes (SSG)</Link></h3>
-        <h3> <Link className={styles.navbar} href="/isr">Show 200 notes (ISG)</Link></h3>
-
+        <h3> <Link className={styles.navbar} href="/isr">Show 200 notes (ISR)</Link></h3>
 
       </main>
 

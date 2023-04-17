@@ -5,7 +5,7 @@ export default function ISRNotes({ notes}: {notes:Note[]}): JSX.Element {
 
     return (
         <div>
-            <h1>200 Notes (ISG)</h1>
+            <h1>200 Notes (ISR)</h1>
             {notes.map((note) => (
                 <div key={note._id}>
                     <p>Name: {note.name}</p>
